@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Servicios</title>
+  <link rel="stylesheet" href="servicios.css">
+</head>
+<body>
+
+  <header>
+    <div class="header-container">
+      <img src="index.imagenes/infill2.png" alt="Logo" class="logo">
+      <nav class="nav-links">
+        <a href="index.html">Inicio</a>
+        <a href="galeria.html">Galería</a>
+        <a href="servicios.html" class="active">Servicios</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <img src="index.imagenes/doble i.png" alt="Letra I" class="logo-central">
+
+    <!-- Sección de Servicios -->
+    <section class="servicios">
+      <h2>SERVICIOS</h2>
+
+      <div class="servicio-bloques">
+        <div class="servicio">
+          <h3>Impresión de diseños personalizados:</h3>
+          <div class="subservicio">
+            <h4>Diseño 3D:</h4>
+            <p>Diseño de modelos 3D con entrega del fichero original.</p>
+          </div>
+          <div class="subservicio">
+            <h4>Prototipado:</h4>
+            <p>Diseño de modelos en 3D e impresión de las piezas junto con envío de las mismas.</p>
+          </div>
+        </div>
+
+        <div class="servicio">
+          <h3>Impresión de diseños ya existentes:</h3>
+          <div class="subservicio">
+            <h4>Impresión en filamento:</h4>
+            <ul>
+              <li>Materiales PLA, PETG y TPU.</li>
+              <li>Para cada material hay diversos colores disponibles.</li>
+              <li>Volumen máximo de impresión 25×25×25 cm.</li>
+            </ul>
+          </div>
+          <div class="subservicio">
+            <h4>Impresión en resina:</h4>
+            <ul>
+              <li>Resina estándar, resina reforzada y resina flexible con variedad de colores a elegir.</li>
+              <li>Volumen máximo de impresión 12×20×22 cm.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="presupuesto">
+      <h2>ENVIA TU IDEA Y TE MANDAMOS PRESUPUESTO</h2>
+
+      <form id="formulario-idea">
+
+        <!-- Desplegable -->
+        <div class="select-container">
+          <select name="tipo-impresion" required>
+            <option value="">Tipo de impresión</option>
+            <option value="filamento">Impresión en filamento PLA, PETG (5 € por hora).</option>
+            <option value="resina">Impresión en resina (8 € por hora).</option>
+          </select>
+        </div>
+
+        <div class="textarea-container">
+          <label for="idea">¿Quieres hacer un modelado desde 0? Cuéntanos tu idea:</label>
+          <textarea id="idea" name="idea" rows="5" placeholder="Escribe aquí tu idea..."></textarea>
+        </div>
+
+        <div class="upload-container">
+          <label for="file-upload" class="custom-file-upload">
+            <div class="upload-box">
+              <span class="upload-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#D6E3D3" viewBox="0 0 24 24">
+                  <path d="M5 20h14v-2H5v2zM12 2l5.5 5.5h-4v6h-3v-6h-4L12 2z"/>
+                </svg>
+              </span>
+            </div>
+          </label>
+          <input id="file-upload" type="file" style="display: none;">
+        </div>
+
+        <button type="submit" class="boton-enviar">Enviar</button>
+
+        <div id="mensaje-envio" style="margin-top: 20px; color: #D6E3D3; text-align: center; display: none;">
+          Gracias por enviarnos tu propuesta, nos pondremos en contacto contigo para enviarte un presupuesto :)
+        </div>
+
+      </form>
+    </section>
+
+    <footer>
+      <p>© 2025</p>
+    </footer>
+  </main>
+
+  <script>
+    const formulario = document.getElementById('formulario-idea');
+    const mensaje = document.getElementById('mensaje-envio');
+    const textarea = document.getElementById('idea');
+    const fileUpload = document.getElementById('file-upload');
+
+    formulario.addEventListener('submit', function(event) {
+      event.preventDefault(); 
+      // Evita que se recargue la página
+
+      const textoRellenado = textarea.value.trim() !== '';
+      const archivoSubido = fileUpload.files.length > 0;
+
+      if (textoRellenado || archivoSubido) {
+        mensaje.style.display = 'block'; // Mostrar mensaje
+        formulario.reset(); // Limpiar formulario
+      } else {
+        alert('Por favor, escribe tu idea o sube un archivo antes de enviar, gracias.');
+      }
+    });
+  </script>
+
+</body>
+</html>
